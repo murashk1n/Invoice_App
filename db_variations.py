@@ -2,6 +2,8 @@ from flet import *
 import sqlite3
 conn = sqlite3.connect('invoice.db',check_same_thread=False)
 
+# tb = Column(scroll="always")
+
 tb = DataTable(
 	columns=[
 		DataColumn(Text("Category ID")),

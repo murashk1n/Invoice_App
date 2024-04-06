@@ -3,10 +3,10 @@ from flet_route import Params, Basket
 from validate_email import validate_email
 import sqlite3
 from flet import * 
-from views.app_bar import AppBar   
+from views.app_bar import AppBar
 
 def page_reg(page: ft.Page, params: Params, basket: Basket):
-    
+
     def register(e):
         db = sqlite3.connect('invoice.db')
         

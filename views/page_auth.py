@@ -5,12 +5,12 @@ from flet import *
 from views.app_bar import AppBar
 
 def page_auth(page: ft.Page, params: Params, basket: Basket):
-        
+  
     def auth_user(e):
         db = sqlite3.connect('invoice.db')
         cur = db.cursor()
-
         cur.execute(f"SELECT * FROM users WHERE login = '{user_login.value}' AND pass = '{user_pass.value}'")
+        
         if cur.fetchone() != None:
             page.snack_bar = ft.SnackBar(ft.Text('Successful login!'))
             page.snack_bar.open = True
@@ -43,7 +43,6 @@ def page_auth(page: ft.Page, params: Params, basket: Basket):
               [
                 ft.Column(
                   [
-                    ft.Text('Login'),
                     user_login,
                     user_pass,
                     btn_auth,

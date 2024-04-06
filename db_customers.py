@@ -66,7 +66,6 @@ def updateandsave(e):
 		print(e)
 
 dlg = Container(
-	padding=10,
 			content=Column([
 				Row([
 				Text("Edit Form",size=30,weight="bold"),
@@ -85,9 +84,9 @@ dlg = Container(
 
 def showedit(e):
 	data_edit = e.control.data
-	id_edit.value = data_edit['id']
-	firstname_edit.value = data_edit['firstname']
-	lastname_edit.value = data_edit['lastname']
+	id_edit.value = data_edit['customer_id']
+	firstname_edit.value = data_edit['first_name']
+	lastname_edit.value = data_edit['last_name']
 	address_edit.value = data_edit['address']
 	zip_edit.value = data_edit['zip']
 	city_edit.value = data_edit['city']
@@ -96,7 +95,7 @@ def showedit(e):
 
 	dlg.visible = True
 	dlg.update()
- 
+
 def create_table():
 	c = conn.cursor()
 	c.execute("""CREATE TABLE IF NOT EXISTS customer(
