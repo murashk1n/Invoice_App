@@ -3,11 +3,11 @@ from flet import *
 from flet_route import Params, Basket
 from views.app_bar import AppBar
 from util.snack_bar import show_snack_bar
-from db_products import mytable, tb, calldb
+from db_service import mytable, tb, calldb
 import sqlite3
 conn = sqlite3.connect("invoice.db",check_same_thread=False)
 
-def page_all_products(page: ft.Page, params: Params, basket: Basket):
+def page_all_services(page: ft.Page, params: Params, basket: Basket):
 
 	page.scroll = "auto"
 
@@ -23,15 +23,15 @@ def page_all_products(page: ft.Page, params: Params, basket: Basket):
 		try:
 			# INPUT TO DATABASE
 			c = conn.cursor()
-			c.execute("INSERT INTO product (category_id,trade_name,product_description) VALUES(?,?,?)",(category_id.value,trade_name.value,product_description.value))
+			c.execute("INSERT INTO service (category_id, name, description) VALUES(?,?,?)",(category_id.value, name.value, description.value))
 			conn.commit()
 
 			# AND SLIDE RIGHT AGAIN IF FINAL INPUT SUUCESS
 			inputcon.offset = transform.Offset(2,0)
    
 			category_id.value =''
-			trade_name.value =''
-			product_description.value =''
+			name.value =''
+			description.value =''
    
 			# REFRESH TABLE
 			tb.rows.clear()
@@ -43,8 +43,8 @@ def page_all_products(page: ft.Page, params: Params, basket: Basket):
 
 	# CREATE FIELD FOR INPUT
 	category_id = TextField(label="category id")
-	trade_name = TextField(label="trade name")
-	product_description = TextField(label="product_description")
+	name = TextField(label="name")
+	description = TextField(label="description")
 
 	# CREATE MODAL INPUT FOR ADD NEW DATA 
 	inputcon = Card(
@@ -55,14 +55,14 @@ def page_all_products(page: ft.Page, params: Params, basket: Basket):
 		content=Container(
 			content=Column([
 				Row([
-				Text("Add new product",size=20,weight="bold"),
+				Text("Add new service",size=20,weight="bold"),
 				IconButton(icon="close",icon_size=30,
 				on_click=hidecon
 					),
 					]),
 				category_id,
-				trade_name,
-				product_description,
+				name,
+				description,
 				FilledButton("Save",
 				on_click=savedata)
 			])
@@ -70,13 +70,13 @@ def page_all_products(page: ft.Page, params: Params, basket: Basket):
 	)
 
 	return ft.View(
-    	"/page_all_products",
+    	"/page_all_services",
      	scroll = "always",
         
        	controls=[
             AppBar().build(),
-            Text("PRODUCTS",size=30,weight="bold"),
-			ElevatedButton("add new product", on_click=showInput),
+            Text("SERVICES",size=30,weight="bold"),
+			ElevatedButton("add new service", on_click=showInput),
    			ElevatedButton(text='Go to Back', on_click=lambda _:page.go('/page_cabinet')),
 		mytable,
 		inputcon 

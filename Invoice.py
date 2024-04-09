@@ -5,10 +5,10 @@ from views.home import Home
 from views.page_reg import page_reg
 from views.page_auth import page_auth
 from views.page_all_customers import page_all_customers
-from views.page_all_products import page_all_products
+from views.page_all_services import page_all_services
 from views.page_all_invoices import page_all_invoices
 from views.page_invoice_details import page_invoice_details
-from views.page_all_companies import page_all_companies
+from views.page_all_companies import page_all_companies 
 from views.page_product_category import page_product_category
 from views.page_all_variations import page_all_variations
 from views.page_var_options import page_var_options
@@ -25,7 +25,7 @@ def main(page: ft.Page):
         path(url="/page_reg",clear= True, view=page_reg),
         path(url="/page_auth",clear= True, view=page_auth),
         path(url="/page_all_customers",clear= True, view=page_all_customers),
-        path(url="/page_all_products",clear= True, view=page_all_products),
+        path(url="/page_all_services",clear= True, view=page_all_services),
         path(url="/page_all_invoices",clear= True, view=page_all_invoices),
         path(url="/page_cabinet",clear= True, view=page_cabinet),
         path(url="/page_invoice_details",clear= True, view=page_invoice_details),
