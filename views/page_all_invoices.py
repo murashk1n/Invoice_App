@@ -2,7 +2,7 @@ import flet as ft
 from flet import *
 from flet_route import Params, Basket
 from views.app_bar import AppBar
-# IMPORT YOU CREATE TABLE 
+from util.snack_bar import show_snack_bar
 from db_invoices import mytable, tb, calldb
 import sqlite3
 conn = sqlite3.connect("invoice.db",check_same_thread=False)
@@ -10,8 +10,7 @@ conn = sqlite3.connect("invoice.db",check_same_thread=False)
 def page_all_invoices(page: ft.Page, params: Params, basket: Basket):
     
     # AND RUN SCRIPT FOR CREATE TABLE WHEN FLET FIRST RUN
-	#create_table()
-
+	# create_table()
 	page.scroll = "auto"
 
 	def showInput(e):
@@ -32,12 +31,6 @@ def page_all_invoices(page: ft.Page, params: Params, basket: Basket):
 
 			# AND SLIDE RIGHT AGAIN IF FINAL INPUT SUUCESS
 			inputcon.offset = transform.Offset(2,0)
-
-			# ADD SNACKBAR IF SUCCESS INPUT TO DATABASE
-			page.snack_bar = SnackBar(
-				Text("Saved"),
-				)
-			page.snack_bar.open = True
    
 			customer_id.value = ''
 			date.value = ''
@@ -51,9 +44,7 @@ def page_all_invoices(page: ft.Page, params: Params, basket: Basket):
 			tb.rows.clear()
 			calldb()
 			tb.update()
-			page.update()
-
-
+			show_snack_bar(e.page, 'Saved!')
 		except Exception as e:
 			print(e)
 
@@ -105,7 +96,6 @@ def page_all_invoices(page: ft.Page, params: Params, basket: Basket):
 			ElevatedButton("add new invoice", on_click=showInput),
    			ElevatedButton(text='Go to Back', on_click=lambda _:page.go('/page_cabinet')),
 		mytable,
-		# AND DIALOG FOR ADD DATA
 		inputcon 
         ],
         vertical_alignment=MainAxisAlignment.CENTER,

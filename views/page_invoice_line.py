@@ -2,10 +2,10 @@ import flet as ft
 from flet import *
 from flet_route import Params, Basket
 from views.app_bar import AppBar
-# IMPORT YOU CREATE TABLE 
 from db_invoice_line import mytable, tb, calldb
 import sqlite3
 conn = sqlite3.connect("invoice.db",check_same_thread=False)
+from util.snack_bar import show_snack_bar
 
 global_invoice_id = None
 
