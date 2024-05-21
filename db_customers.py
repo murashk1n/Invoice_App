@@ -133,7 +133,7 @@ def calldb():
                          		data=x,
                         		on_click=showedit
                  		),
-                   	IconButton(icon="delete",icon_color="red",
+                   	IconButton(icon="DELETE",icon_color="red",
                        		data=x['id'],
                         	on_click=showdelete
                  		),

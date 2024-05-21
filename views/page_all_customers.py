@@ -4,8 +4,8 @@ from flet_route import Params, Basket
 from views.app_bar import AppBar
 from util.snack_bar import show_snack_bar
 from db_customers import mytable, tb, calldb
-
 import sqlite3
+
 conn = sqlite3.connect("invoice.db",check_same_thread=False)
 
 def page_all_customers(page: ft.Page, params: Params, basket: Basket):

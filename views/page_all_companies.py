@@ -99,6 +99,7 @@ def page_all_companies(page: ft.Page, params: Params, basket: Basket):
             Text("COMPANIES",size=30,weight="bold"),
 			ElevatedButton("add new company", on_click=showInput),
    			ElevatedButton(text='Go to Back', on_click=lambda _:page.go('/page_cabinet')),
+		mytable,
 		inputcon 
         ],
         vertical_alignment=MainAxisAlignment.CENTER,

@@ -52,7 +52,7 @@ def page_cabinet(page: ft.Page, params: Params, basket: Basket):
                 fit=ft.ImageFit.FIT_HEIGHT,
                 border_radius=ft.border_radius.all(10),
                 tooltip="Data",
-            ), on_click=lambda _:page.go('/page_data')
+            ), on_click=lambda _:page.go('/page_all_services')
         )
     )
 

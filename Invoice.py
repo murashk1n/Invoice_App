@@ -9,12 +9,8 @@ from views.page_all_services import page_all_services
 from views.page_all_invoices import page_all_invoices
 from views.page_invoice_details import page_invoice_details
 from views.page_all_companies import page_all_companies 
-from views.page_product_category import page_product_category
-from views.page_all_variations import page_all_variations
-from views.page_product_item import page_product_item
 from views.page_invoice_line import page_invoice_line
 from views.cabinet import page_cabinet
-from views.page_data import data
 
 def main(page: ft.Page):
 
@@ -29,11 +25,7 @@ def main(page: ft.Page):
         path(url="/page_cabinet",clear= True, view=page_cabinet),
         path(url="/page_invoice_details",clear= True, view=page_invoice_details),
         path(url="/page_all_companies",clear= True, view=page_all_companies),
-        path(url="/page_product_category",clear= True, view=page_product_category),
-        path(url="/page_all_variations",clear= True, view=page_all_variations),
-        path(url="/page_product_item",clear= True, view=page_product_item),
         path(url="/page_invoice_line",clear= True, view=page_invoice_line),
-        path(url="/page_data",clear= True, view=data),
     ]
     
     Routing(page=page, app_routes=app_routes)
