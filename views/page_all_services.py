@@ -23,13 +23,12 @@ def page_all_services(page: ft.Page, params: Params, basket: Basket):
 		try:
 			# INPUT TO DATABASE
 			c = conn.cursor()
-			c.execute("INSERT INTO service (category_id, name, description) VALUES(?,?,?)",(category_id.value, name.value, description.value))
+			c.execute("INSERT INTO service (name, description) VALUES(?,?,?)",(name.value, description.value))
 			conn.commit()
 
 			# AND SLIDE RIGHT AGAIN IF FINAL INPUT SUUCESS
 			inputcon.offset = transform.Offset(2,0)
    
-			category_id.value =''
 			name.value =''
 			description.value =''
    
@@ -42,7 +41,6 @@ def page_all_services(page: ft.Page, params: Params, basket: Basket):
 			print(e)
 
 	# CREATE FIELD FOR INPUT
-	category_id = TextField(label="category id")
 	name = TextField(label="name")
 	description = TextField(label="description")
 
@@ -60,7 +58,6 @@ def page_all_services(page: ft.Page, params: Params, basket: Basket):
 				on_click=hidecon
 					),
 					]),
-				category_id,
 				name,
 				description,
 				FilledButton("Save",
@@ -76,8 +73,8 @@ def page_all_services(page: ft.Page, params: Params, basket: Basket):
        	controls=[
             AppBar().build(),
             Text("SERVICES",size=30,weight="bold"),
-			ElevatedButton("add new service", on_click=showInput),
-   			ElevatedButton(text='Go to Back', on_click=lambda _:page.go('/page_cabinet')),
+			ElevatedButton("Add new service", on_click=showInput),
+   			ElevatedButton(text='Back', on_click=lambda _:page.go('/page_cabinet')),
 		mytable,
 		inputcon 
         ],

@@ -97,8 +97,8 @@ def page_all_customers(page: ft.Page, params: Params, basket: Basket):
        	controls=[
             AppBar().build(),
             Text("CUSTOMERS",size=30,weight="bold"),
-			ElevatedButton("add new data", on_click=showInput),
-   			ElevatedButton(text='Go to Back', on_click=lambda _:page.go('/page_cabinet')),
+			ElevatedButton("Add new customer", on_click=showInput),
+   			ElevatedButton(text='Back', on_click=lambda _:page.go('/page_cabinet')),
 		mytable,
   		inputcon,
         ],

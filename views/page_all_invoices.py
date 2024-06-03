@@ -93,8 +93,8 @@ def page_all_invoices(page: ft.Page, params: Params, basket: Basket):
        	controls=[
         	AppBar().build(),
             Text("INVOICES",size=30,weight="bold"),
-			ElevatedButton("add new invoice", on_click=showInput),
-   			ElevatedButton(text='Go to Back', on_click=lambda _:page.go('/page_cabinet')),
+			ElevatedButton("Add new invoice", on_click=showInput),
+   			ElevatedButton(text='Back', on_click=lambda _:page.go('/page_cabinet')),
 		mytable,
 		inputcon 
         ],

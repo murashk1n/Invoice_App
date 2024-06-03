@@ -97,8 +97,8 @@ def page_all_companies(page: ft.Page, params: Params, basket: Basket):
        	controls=[
             AppBar().build(),
             Text("COMPANIES",size=30,weight="bold"),
-			ElevatedButton("add new company", on_click=showInput),
-   			ElevatedButton(text='Go to Back', on_click=lambda _:page.go('/page_cabinet')),
+			ElevatedButton("Add new company", on_click=showInput),
+   			ElevatedButton(text='Back', on_click=lambda _:page.go('/page_cabinet')),
 		mytable,
 		inputcon 
         ],
