@@ -16,9 +16,12 @@ def page_reg(page: ft.Page, params: Params, basket: Basket):
             id INTEGER PRIMARY KEY,
             login TEXT,
             pass TEXT,
-            email TEXT
+            email TEXT,
+            name TEXT,
+            surname TEXT,
+            company TEXT
         )""")
-        cur.execute(f"INSERT INTO users VALUES(NULL, '{user_login.value}', '{user_pass.value}', '{user_email.value}')")
+        cur.execute(f"INSERT INTO users VALUES(NULL, '{user_login.value}', '{user_pass.value}', '{user_email.value}', '{user_name.value}', '{user_surname.value}', '{user_company.value}')")
         db.commit()
         db.close()
         if validate_email(user_email.value) == True:
@@ -28,7 +31,7 @@ def page_reg(page: ft.Page, params: Params, basket: Basket):
           show_snack_bar(e.page, 'Wrong email format!')  
 
     def validate(e):
-        if all([user_login.value, user_pass.value, user_email.value]):
+        if all([user_login.value, user_pass.value, user_email.value, user_name.value, user_surname.value, user_company.value]):
             btn_reg.disabled = False
             btn_auth.disabled = False
         else:
@@ -39,10 +42,13 @@ def page_reg(page: ft.Page, params: Params, basket: Basket):
     user_login = ft.TextField(label='Login', width=200, on_change=validate)
     user_pass = ft.TextField(label='Pass', password=True, width=200, on_change=validate)
     user_email = ft.TextField(label='Email', width=200, on_change=validate)
+    user_name = ft.TextField(label='Name', width=200, on_change=validate)
+    user_surname = ft.TextField(label='Surname', width=200, on_change=validate)
+    user_company = ft.TextField(label='Company', width=200, on_change=validate)
     btn_reg = ft.OutlinedButton(text='Sign in', width=200, on_click=register, disabled=True)
     btn_auth = ft.OutlinedButton(text='Login', width=200, on_click=lambda _:page.go('/page_auth'), disabled=True)
-    btn_change = ft.ElevatedButton(text='Click me!', width=200, on_click=lambda _:page.go('/page_auth'))
-    reg_field = ft.Text('Already registered?',width=200,  text_align=ft.TextAlign.CENTER)
+    btn_change = ft.ElevatedButton(text='Click me!', width=130, on_click=lambda _:page.go('/page_auth'))
+    reg_field = ft.Text('Already registered?',width=130,  text_align=ft.TextAlign.CENTER)
     return ft.View(
         "/page_reg",
         
@@ -53,18 +59,28 @@ def page_reg(page: ft.Page, params: Params, basket: Basket):
               [
                 ft.Column(
                   [
-                    ft.Text('Sign in'),
                     user_login,
-                    user_pass,
+                    user_name,
                     user_email,
-                    btn_reg,
-                    reg_field,
-                    btn_change
                   ],
-                )
+                ),
+                ft.Column(
+                  [
+                    user_pass,
+                    user_surname,
+                    user_company,
+                  ],
+                ),                    
               ],
               alignment=ft.MainAxisAlignment.CENTER
-            )
+            ),
+            btn_reg,
+            ft.Row([
+              reg_field,
+              btn_change
+            ],
+              alignment=ft.MainAxisAlignment.CENTER
+              ),
           ],
         vertical_alignment=MainAxisAlignment.CENTER,
         horizontal_alignment=CrossAxisAlignment.CENTER,

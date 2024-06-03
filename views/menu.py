@@ -3,7 +3,7 @@ from flet_route import Params, Basket
 from flet import *
 from views.app_bar import AppBar
 
-def page_cabinet(page: ft.Page, params: Params, basket: Basket):
+def page_menu(page: ft.Page, params: Params, basket: Basket):
     images = ft.Row(expand=1, wrap=False, scroll="always")
     
     images.controls.append(
@@ -57,11 +57,11 @@ def page_cabinet(page: ft.Page, params: Params, basket: Basket):
     )
 
     return ft.View(
-        "/page_cabinet",
+        "/page_menu",
         
        controls=[
             AppBar().build(),
-            Text("Cabinet",size=30,weight="bold"),
+            Text("Menu",size=30,weight="bold"),
             images,
         ],
         vertical_alignment=MainAxisAlignment.CENTER,
